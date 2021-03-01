@@ -109,7 +109,16 @@ router.route('/Movies')
         }
         var o = getJSONObjectForMovieRequirement(req, "Movies posted");
         res.json(o);
-    }
+    })
+    .patch(function(req, res){
+        console.log(req.body);
+        res = res.status(200);
+        if (req.get('Content-Type')) {
+            res = res.type(req.get('Content-Type'));
+        }
+        var o = getJSONObjectForMovieRequirement(req, "Movies patched");
+        res.json(o);
+        }
     );
 
 app.use('/', router);
